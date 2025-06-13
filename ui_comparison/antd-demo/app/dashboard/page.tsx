@@ -57,10 +57,10 @@ export default function DashboardPage() {
   const offsetY = visibleRange.start * itemHeight;
 
   return (
-    <div style={{ height: "90vh", display: "flex", flexDirection: "column" }}>
-      <h1 className="text-2xl font-bold mb-4">Bảng dữ liệu</h1>
+    <div className="flex flex-col">
+      <h1 style={{fontSize: 24, fontWeight: 600}}>Bảng dữ liệu</h1>
       
-      <div style={{ flex: 1 }}>
+      <div className="flex-1">
         <div 
           style={{
             height: containerHeight,
@@ -79,7 +79,7 @@ export default function DashboardPage() {
                 rowKey={(record) => `${record.key}-${record.virtualIndex}`}
                 scroll={{ x: "max-content" }}
                 showHeader={visibleRange.start === 0}
-                style={{ background: "white" }}
+                className="bg-white"
               >
                 <Column
                   title="ID"
@@ -102,17 +102,10 @@ export default function DashboardPage() {
           </div>
 
           {visibleRange.start > 0 && visibleRange.end < tableData.length && (
-            <div style={{
-              position: "sticky",
-              top: 0,
-              zIndex: 10,
-              background: "white",
-              borderBottom: "1px solid #f0f0f0",
-            }}>
+            <div className="sticky top-0 z-10 bg-white border-b border-gray-300">
               <Table<DataType>
                 dataSource={[]}
                 pagination={false}
-                size="small"
                 scroll={{ x: "max-content" }}
               >
                 <Column title="ID" key="id" width={80} />

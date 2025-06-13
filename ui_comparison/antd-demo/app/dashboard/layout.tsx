@@ -23,33 +23,29 @@ export default function DashboardLayout({
     {
       key: "1",
       icon: <DashboardOutlined />,
-      label: <Link href="/dashboard">Tổng quan</Link>,
+      label: <Link href="/dashboard">Dashboard</Link>,
     },
     {
       key: "2",
       icon: <UserOutlined />,
-      label: <Link href="/dashboard/profile">Người dùng</Link>,
+      label: <Link href="/dashboard/profile">Profile</Link>,
     },
     {
       key: "3",
       icon: <SettingOutlined />,
-      label: <Link href="/dashboard/settings">Cài đặt</Link>,
+      label: <Link href="/dashboard/settings">Settings</Link>,
     },
   ];
 
   return (
     <Flex gap="middle" wrap>
-      <Layout
-        className="rounded-[8px] overflow-hidden w-[calc(50%-8px)] max-w-[calc(50%-8px)]"
-        style={{ minHeight: "100vh" }}
-      >
+      <Layout className="overflow-hidden w-[calc(50%-8px)] " >
         <Sider
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
           width="200px"
-          className="text-center line-height-[120px] text-white"
-          style={{ minHeight: "100vh" }}
+          className="text-center text-white h-full"
         >
           <Menu
             theme="dark"
@@ -58,8 +54,8 @@ export default function DashboardLayout({
             items={menuItems}
           />
         </Sider>
-        <Layout style={{ minHeight: "100vh" }}>
-          <Header style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+        <Layout>
+          <Header className="flex justify-end items-center">
             <Button
               type="primary"
               onClick={() => {
@@ -69,10 +65,7 @@ export default function DashboardLayout({
               Logout
             </Button>
           </Header>
-          <Content
-            className="flex-1 min-h-[calc(100vh-128px)] text-center text-white leading-[120px]"
-            style={{ padding: "16px" }}
-          >
+          <Content style={{ height: "calc(100vh - 64px)", padding: 16 }} className="text-center text-white">
             {children}
           </Content>
         </Layout>
