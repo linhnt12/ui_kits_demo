@@ -1,10 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   transpilePackages: ['antd', '@ant-design/icons', '@ant-design/cssinjs'],
   webpack: (config) => {
     return config;
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
