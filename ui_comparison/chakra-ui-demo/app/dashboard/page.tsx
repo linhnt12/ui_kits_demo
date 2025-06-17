@@ -8,17 +8,28 @@ import {
 } from "@chakra-ui/react";
 import { tableData } from "./data/tableData";
 import { FixedSizeList as List } from "react-window";
+import { useThemeColors } from "../constants/theme";
 
 export default function Dashboard() {
+  const {
+    bgColor,
+    headerBg,
+    borderColor,
+    rowBg,
+    alternateRowBg,
+    textColor,
+  } = useThemeColors();
+
   const Row = ({ index, style }: { index: number; style: React.CSSProperties }) => {
     const item = tableData[index];
     return (
       <Flex
         style={style}
         borderBottom="1px"
-        borderColor="gray.200"
+        borderColor={borderColor}
         alignItems="center"
-        bg={index % 2 === 0 ? "white" : "gray.50"}
+        bg={index % 2 === 0 ? rowBg : alternateRowBg}
+        color={textColor}
       >
         <Box w="10%" px={4}>
           {index + 1}
@@ -47,28 +58,29 @@ export default function Dashboard() {
 
   return (
     <Box>
-      <Text fontSize="2xl" fontWeight="bold" mb={4}>
+      <Text fontSize="2xl" fontWeight="bold" mb={4} color={textColor}>
         User Data Table
       </Text>
       <Box
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        bg="white"
-        borderColor="gray.200"
+        bg={bgColor}
+        borderColor={borderColor}
         maxH="calc(100vh - 200px)"
         position="relative"
       >
         {/* Header */}
         <Flex
-          bg="gray.100"
+          bg={headerBg}
           fontWeight="bold"
           borderBottom="1px"
-          borderColor="gray.200"
+          borderColor={borderColor}
           py={3}
           position="sticky"
           top={0}
           zIndex={1}
+          color="white"
         >
           <Box w="10%" px={4}>ID</Box>
           <Box w="20%" px={4}>Name</Box>
